@@ -1,0 +1,28 @@
+experiment_name: Streamlit-Live-Benchmark
+seed: 42
+dataset_type: pastis
+data_root: D:\torchgeo\torchgeo-ts-bench\data\pastis
+fixture_dir: D:\torchgeo\torchgeo-0.10.1\tests\data\pastis
+output_dir: D:\torchgeo\torchgeo-ts-bench\outputs
+task: classification
+num_classes: 5
+seq_len: 6
+in_channels: 3
+height: 32
+width: 32
+batch_size: 4
+epochs: 3
+lr: 0.001
+device: cpu
+models:
+- convlstm
+- ltae
+- st_3dcnn
+- temporal_transformer
+leakage_checks:
+  spatial_iou_threshold: 0.0
+  enforce_chronological_split: false
+preprocessing:
+  normalization: min_max
+  scale_factor: 1.0
+config_hash: cdf6a3a8abf8b5d1

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "torchgeo-ts-bench"
+version = "0.1.0"
+description = "A Standardized Benchmark Suite for Spatiotemporal Geospatial Foundation Models"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Praveen Kanth N", email = "praveenkanth.n@vitstudent.ac.in" },
+    { name = "Om Aravindhashan S", email = "omaravindhashan.s@vitstudent.ac.in" },
+    { name = "Monish R", email = "monish.r@vitstudent.ac.in" },
+]
+dependencies = [
+    "torch>=2.2.0",
+    "torchvision>=0.17.0",
+    "torchgeo>=0.10.0",
+    "numpy>=1.26.0",
+    "pandas>=2.1.0",
+    "scikit-learn>=1.4.0",
+    "matplotlib>=3.7.0",
+    "pyyaml>=6.0.0",
+    "rasterio>=1.4.0",
+    "geopandas>=1.0.0",
+    "streamlit>=1.35.0",
+    "psutil>=5.9.0",
+]
+
+[project.scripts]
+torchgeo-ts-bench = "torchgeo_ts_bench.experiment_runner:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

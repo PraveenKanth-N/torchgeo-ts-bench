@@ -1,0 +1,43 @@
+# TorchGeo-TS-Bench: Benchmark Configuration
+# Course Project: A Standardized Benchmark Suite for Spatiotemporal Geospatial Foundation Models
+# Authors: Praveen Kanth N (23MIC0078), Om Aravindhashan S (23MID0222), Monish R (23MID0318)
+
+experiment_name: "Standardized-Spatiotemporal-Foundation-Benchmark"
+seed: 42
+output_dir: "outputs"
+
+# Dataset Specification
+dataset_type: "pastis"   # "pastis" for real Sentinel-2 satellite time-series, or "synthetic"
+data_root: "data/pastis"
+fixture_dir: "D:/torchgeo/torchgeo-0.10.1/tests/data/pastis"
+
+# Spatiotemporal Data Dimensions
+task: "classification"
+num_classes: 5
+seq_len: 6
+in_channels: 3
+height: 32
+width: 32
+
+# Training and Optimization
+batch_size: 4
+epochs: 3
+lr: 0.001
+device: "cpu"   # "cpu" for laptop compatibility, "cuda" if GPU is available
+
+# Models to Benchmark
+models:
+  - "convlstm"              # TorchGeo ConvLSTM (Recurrent Spatiotemporal)
+  - "ltae"                  # TorchGeo L-TAE (Temporal Attention Encoder)
+  - "st_3dcnn"              # 3D Convolutional Spatiotemporal Baseline
+  - "temporal_transformer"  # Temporal Self-Attention Transformer Baseline
+
+# Novelty: Automated Leakage Detection Protocol
+leakage_checks:
+  spatial_iou_threshold: 0.0
+  enforce_chronological_split: false
+
+# Standardized Preprocessing
+preprocessing:
+  normalization: "min_max"
+  scale_factor: 1.0
